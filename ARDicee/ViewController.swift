@@ -11,6 +11,8 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    
+    var diceArray = [SCNNode]() // initialize empty array to hold all created nodes / dice
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -84,15 +86,51 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
                 // if let block allows checking for presence of diceNode before adding to sceneView
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    // set the position of the node based off the real-world dimensions from the hitResult
                     diceNode.position = SCNVector3(
                         x: hitResults.worldTransform.columns.3.x,
-                        y: hitResults.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                        y: hitResults.worldTransform.columns.3.y + diceNode.boundingSphere.radius, // to lay flat rather than centered
                         z: hitResults.worldTransform.columns.3.z
                     )
+                    
+                    diceArray.append(diceNode)
                     sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    roll(dice: diceNode)
                 }
             }
         }
+    }
+    
+    
+    func rollAllDice() -> Void {
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                roll(dice: dice)
+            }
+        }
+    }
+    
+    func roll(dice: SCNNode) -> Void {
+        let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi / 2)
+        let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi / 2)
+        
+        dice.runAction(SCNAction.rotateBy(
+            x: CGFloat(randomX) * 5,
+            y: 0,
+            z: CGFloat(randomZ) * 5,
+            duration: 0.5)
+        )
+    }
+    
+    
+    @IBAction func rollAgain(_ sender: UIBarButtonItem) {
+        rollAllDice()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        rollAllDice()
+        print("shook phone")
     }
     
     
@@ -112,7 +150,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let gridMaterial = SCNMaterial()
             gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
-            
             
             plane.materials = [gridMaterial]
             
