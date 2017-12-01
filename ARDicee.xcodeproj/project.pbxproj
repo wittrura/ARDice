@@ -57,9 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				16F6D2EE1FD1B3210089BEF8 /* AppDelegate.swift */,
-				16F6D2F01FD1B3210089BEF8 /* art.scnassets */,
 				16F6D2F21FD1B3210089BEF8 /* ViewController.swift */,
 				16F6D2F41FD1B3210089BEF8 /* Main.storyboard */,
+				16F6D2F01FD1B3210089BEF8 /* art.scnassets */,
 				16F6D2F71FD1B3210089BEF8 /* Assets.xcassets */,
 				16F6D2F91FD1B3210089BEF8 /* LaunchScreen.storyboard */,
 				16F6D2FC1FD1B3210089BEF8 /* Info.plist */,
@@ -282,7 +282,7 @@
 				DEVELOPMENT_TEAM = 47GDWEFLEB;
 				INFOPLIST_FILE = ARDicee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanwittrup.ARDicee;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARKitBasics47GDWEFLEB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -297,7 +297,7 @@
 				DEVELOPMENT_TEAM = 47GDWEFLEB;
 				INFOPLIST_FILE = ARDicee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanwittrup.ARDicee;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARKitBasics47GDWEFLEB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
